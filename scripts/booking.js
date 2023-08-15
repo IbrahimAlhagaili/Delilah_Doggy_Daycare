@@ -35,14 +35,19 @@ document.addEventListener("DOMContentLoaded", function() {
 // when the clear-button is clicked, the "clicked" class is removed from all days, any other relevant variables are reset, and the calculated cost is set to 0.
 
 document.getElementById("clear-button").addEventListener("click", function() {
-    const dayElement = document.querySelectorAll(".day-selector li");
-    dayElement.forEach(function(dayElement)  {
+    const dayElements = document.querySelectorAll(".day-selector li");
+    dayElements.forEach(function(dayElement) {
         dayElement.classList.remove("clicked");
     });
+    // Reset the rate to full-day rate
+    costPerDay = 35;
+    document.getElementById("full").classList.add("clicked");
+    document.getElementById("half").classList.remove("clicked");
+    // Reset the number of days selected
     numberOfDaysSelected = 0;
+    // Recalculate and update the cost
     calculateCost();
 });
-
 
 
 
